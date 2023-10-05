@@ -1,0 +1,26 @@
+<div>
+	<div class="login-content">
+        <mat-toolbar class="login-toolbar"><div mat-dialog-title>{{data.title}}</div></mat-toolbar>
+
+   <mat-card fxLayoutGap>
+
+    <mat-divider></mat-divider>
+
+    <div display-2 style="height:40px; width: 100%;padding-top: 5px;font-size: medium; margin: 10px; text-align: center;">{{data.message}}</div>
+    <mat-divider></mat-divider>
+    <div mat-dialog-actions>
+        <div class="wpr">
+            <div>
+                <button mat-button class="cancel-button" (click)="onDismiss()">No</button>
+            </div>
+            <div>
+                <button mat-raised-button class="mat-primary submit-button" (click)="onConfirm()">Yes</button>
+            </div>
+            
+
+        </div>
+ 
+    </div>
+</mat-card>
+    </div>
+</div>

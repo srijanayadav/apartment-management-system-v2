@@ -1,0 +1,80 @@
+
+<div>
+	<div class="login-content">
+        <mat-toolbar class="login-toolbar" >{{title}}</mat-toolbar>
+        <mat-card>
+           
+
+<mat-dialog-content [formGroup]="form">
+  
+  
+    <mat-form-field >
+        <mat-label>Email</mat-label>
+        <input [readonly]="true" matInput
+                placeholder="Email"
+               formControlName="email">
+    </mat-form-field>
+   
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput
+                placeholder="First Name"
+               formControlName="first_name">
+               <mat-error *ngIf="f.get('first_name')?.errors?.['required']">
+                First Name is required.
+              </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput
+                placeholder="Last Name"
+               formControlName="last_name">
+               <mat-error *ngIf="f.get('last_name')?.errors?.['required']">
+                Last Name is required.
+              </mat-error>              
+    </mat-form-field>
+   
+    <mat-form-field>
+        <mat-label>Contact Number</mat-label>
+        <input matInput
+                placeholder="Contact Number"
+               formControlName="contact_number">
+               <mat-error *ngIf="f.get('contact_number')?.errors?.['required']">
+                Contact Number is required.
+               </mat-error> 
+                <mat-error *ngIf="f.get('contact_number')?.errors?.['pattern']">
+                    Please, Enter 10 digit Mobile Number.
+                </mat-error> 
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Address</mat-label>
+        <textarea  matInput
+            placeholder="Address"
+            formControlName="address">
+        </textarea>
+        <mat-error *ngIf="f.get('address')?.errors?.['required']">
+            Address is required.
+          </mat-error>              
+
+    </mat-form-field>
+   
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="wpr">
+       <div>
+         <button class="mat-raised-button cancel-button"(click)="close()">Close</button>
+        
+       </div>
+       <div>
+
+         <button class="mat-raised-button mat-primary submit-button"(click)="save()">Save</button>
+       </div>
+  
+</div>
+</mat-dialog-actions>
+        </mat-card>
+    </div>
+
+</div>

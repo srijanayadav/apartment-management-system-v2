@@ -1,0 +1,52 @@
+
+<div>
+	<div class="login-content">
+        <mat-toolbar class="login-toolbar" >APPLY RENTAL</mat-toolbar>
+        <mat-card>
+           
+<mat-divider></mat-divider>
+<mat-progress-bar *ngIf="this.isLoading" mode="query"></mat-progress-bar>
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Tenant</mat-label>
+        <input matInput
+            placeholder=""
+            readonly   
+            value="{{tenant_name}}">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Unit</mat-label>
+       
+        <input type="text"
+        placeholder="select unit"
+        aria-label="Number"
+        matInput
+        formControlName ="unit_id"
+        [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let item of filteredUnits | async" [value]="item.value">
+                {{item.viewValue}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+  
+  
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+    <div class="wpr">
+       <div>
+         <button class="mat-raised-button cancel-button"(click)="close()">Close</button>
+        
+       </div>
+       <div>
+
+         <button class="mat-raised-button mat-primary submit-button"(click)="save()">Save</button>
+       </div>
+  
+</div>
+</mat-dialog-actions>
+        </mat-card>
+    </div>
+
+</div>

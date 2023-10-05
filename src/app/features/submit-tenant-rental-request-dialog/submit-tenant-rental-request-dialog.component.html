@@ -1,0 +1,27 @@
+
+<div>
+	<div class="login-content">
+        <mat-toolbar class="login-toolbar" >APPLY RENTAL</mat-toolbar>
+        <mat-card>
+           
+<mat-divider></mat-divider>
+<mat-progress-bar *ngIf="this.isLoading" mode="query"></mat-progress-bar>
+<mat-label style="width: 100%; text-align: center; height: 40px;font-size: medium;">{{"do you want to apply for unit:" + unit_number + "?"}}</mat-label>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+    <div class="wpr">
+       <div>
+         <button class="mat-raised-button cancel-button"(click)="close()">Close</button>
+        
+       </div>
+       <div>
+
+         <button class="mat-raised-button mat-primary submit-button"(click)="save()">Save</button>
+       </div>
+  
+</div>
+</mat-dialog-actions>
+        </mat-card>
+    </div>
+
+</div>

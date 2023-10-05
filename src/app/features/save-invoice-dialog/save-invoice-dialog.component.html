@@ -1,0 +1,68 @@
+
+<div>
+	<div class="login-content">
+        <mat-toolbar class="login-toolbar" >ADD INVOICE</mat-toolbar>
+        <mat-card>
+           
+<mat-divider></mat-divider>
+<mat-progress-bar *ngIf="this.isLoading" mode="query"></mat-progress-bar>
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Purpose</mat-label>
+        <mat-select formControlName ="purpose" placeholder="Purpose" required>
+          <mat-option *ngFor="let type of purposeItems" [value]="type.value">
+            {{type.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.get('purpose')?.errors?.['required']">
+          purpose is required.
+         </mat-error> 
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Total Amount</mat-label>
+        <input matInput
+            placeholder="Total Amount"
+            formControlName="total_amount">
+            <mat-error *ngIf="f.get('total_amount')?.errors?.['required']">
+                Total Amount is required.
+            </mat-error> 
+            <mat-error *ngIf="f.get('total_amount')?.errors?.['pattern']">
+                Please, Enter only number.
+            </mat-error> 
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Payee</mat-label>
+        <input type="text"
+        placeholder="select payee"
+        aria-label="Number"
+        matInput
+        formControlName ="payee_id"
+        [matAutocomplete]="auto">
+ <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
+   <mat-option *ngFor="let item of filteredPayee | async" [value]="item.value">
+     {{item.viewValue}}
+   </mat-option>
+ </mat-autocomplete>
+    </mat-form-field>
+  
+  
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+    <div class="wpr">
+       <div>
+         <button class="mat-raised-button cancel-button"(click)="close()">Close</button>
+        
+       </div>
+       <div>
+
+         <button class="mat-raised-button mat-primary submit-button"(click)="save()">Save</button>
+       </div>
+  
+</div>
+</mat-dialog-actions>
+        </mat-card>
+    </div>
+
+</div>

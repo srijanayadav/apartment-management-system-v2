@@ -1,0 +1,62 @@
+
+.mat-card-tile {
+  background:rgba(0,0,0,.06); 
+  padding:10px 10px;
+  font-size: medium;
+    
+  }
+  .flex-me {
+    display: inline-flex;
+    background: whitesmoke;
+
+  }
+  
+
+  .div-table {
+    display: table;
+    width: 100%;
+    height: auto;
+    background-color: #eee;
+    border-spacing: 0px;
+    border-radius:0px;
+
+}
+
+.trow {
+    display: table-row;
+    width: 100%;
+    
+}
+
+.tcolumn {
+    display: table-cell;
+    vertical-align: top;
+    background-color: #fff;
+    padding: 10px 8px;
+    width:auto
+}
+
+.tcolumn1 {
+    width: 240px
+}
+
+.tcolumn4,
+.tcolumn5,
+.tcolumn6 {
+    width: 80px
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: white;
+
+  }
+
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    margin: 1px;
+
+
+  }

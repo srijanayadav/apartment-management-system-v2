@@ -1,0 +1,55 @@
+<div>
+	<div class="login-content">
+        <mat-toolbar class="login-toolbar"><div mat-dialog-title>Unit Detail</div></mat-toolbar>
+
+   
+    </div>
+</div>
+
+<mat-dialog-content>  
+
+        <div class="detail-contain" >
+            <span>Unit Number</span>
+            <span>{{ unitInfo?.unit_number }}</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="detail-contain" >
+            <span>Floor Number</span>
+            <span>{{ unitInfo?.floor_number }}</span>
+        </div>
+        <mat-divider></mat-divider>
+    <div class="detail-contain" >
+        <span>Title</span>
+        <span>{{ unitInfo?.title }}</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="detail-contain" >
+        <span>Number of Beds</span>
+        <span>{{ unitInfo?.bedroom }}</span>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="detail-contain" >
+        <span>Number of Bathrooms</span>
+        <span>{{ unitInfo?.bathroom }}</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="detail-contain" >
+        <span>Number of Balcony</span>
+        <span>{{ unitInfo?.balcony }}</span>
+    </div>
+   
+        
+        
+</mat-dialog-content>  
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+    <div class="wpr">
+       <div>
+         <button class="mat-raised-button cancel-button" (click)="close()">Close</button>
+        
+       </div>
+      
+
+</div>
+</mat-dialog-actions>

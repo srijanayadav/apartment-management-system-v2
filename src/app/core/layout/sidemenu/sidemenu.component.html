@@ -1,0 +1,102 @@
+
+<mat-toolbar>  
+  <div fxLayout="row" style=" height: 100%; width: 100%;" fxLayoutAlign="space-between" >
+    <div class="main-title-container">
+      Apartment Management System 
+    </div>
+   <div >
+   
+  </div>
+  <div>
+    <div fxLayout="row" >
+      <div>
+        <img class="avatar-user mat-elevation-z8"
+          src="../../../../assets/img/avatar.png"/>
+      </div>
+      <div  style="margin-left: 5px; margin-top: 5px;">
+        <div>
+          <div style="display: grid;">
+            <span style="font-size: medium;height:17px">{{userFullName }}</span>
+            <span style="font-size: x-small;height: 14px;">{{role }}</span>
+          </div>
+          
+          <div >
+            <a [routerLink]="" (click)="changePassword()"><span style="font-size: smaller;" >change password</span> </a>
+            
+          </div>
+          
+        </div>
+       
+      </div>
+
+    </div>
+    
+ 
+    
+ 
+  </div>
+     
+</div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav class="mat-elevation-z8" mode = "side" opened> 
+    <img
+  class="avatar mat-elevation-z8"
+  src="https://images.unsplash.com/photo-1627327053419-fe894c4650ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"/>
+
+<h4 class="name">Srijana Queens Tower</h4>
+<p class="designation">Bangalore-560032</p>
+
+<mat-divider></mat-divider>
+    <button mat-button class="menu-button" routerLink="home" routerLinkActive="active-link">
+      <mat-icon>dashboard</mat-icon>
+      <span >dashboard</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="units" routerLinkActive="active-link">
+        <mat-icon>home</mat-icon>
+        <span >units</span>
+    </button>
+    <button *ngIf="jwtPayloadData.is_superuser" mat-button class="menu-button" routerLink="tenants" routerLinkActive="active-link">
+      <mat-icon>person</mat-icon>
+      <span >tenants</span>
+    </button>
+    <button *ngIf="jwtPayloadData.is_superuser" mat-button class="menu-button" routerLink="owners" routerLinkActive="active-link">
+        <mat-icon>person</mat-icon>
+        <span >owners</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="rentals" routerLinkActive="active-link">
+      <mat-icon>person</mat-icon>
+      <span >rentals</span>
+  </button>
+    
+    <button *ngIf="jwtPayloadData.is_superuser" mat-button class="menu-button" routerLink="users" routerLinkActive="active-link">
+        <mat-icon>people</mat-icon>
+        <span >users</span>
+    </button>
+    <button  mat-button class="menu-button" routerLink="invoices" routerLinkActive="active-link">
+      <mat-icon>payment</mat-icon>
+      <span >payments</span>
+  </button>
+    <button mat-button class="menu-button" routerLink="about" routerLinkActive="active-link">
+      <mat-icon>info</mat-icon>
+      <span >about</span>
+    </button>
+  
+    <mat-divider></mat-divider>
+    <button *ngIf="!jwtPayloadData.is_superuser" mat-button class="menu-button"  (click)="updateUserProfile()">
+      <mat-icon>edit</mat-icon>
+      <span>edit profile</span>
+    </button>
+
+    <button mat-button class="menu-button"  (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>logout</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+        <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

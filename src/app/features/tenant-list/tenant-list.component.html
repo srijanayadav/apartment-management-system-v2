@@ -1,0 +1,80 @@
+<mat-card class="title-card"> <span>Tenants</span> </mat-card>
+
+
+<div class="header-container">
+    <div class="left">
+        <mat-form-field [style.width.px]=300 [style.height.px]=70>
+            <input matInput  type="text" (keyup)="doFilter(getValue($event))" placeholder="Filter">
+          </mat-form-field>
+    </div>
+    <div class="right">
+        <button mat-raised-button [style.width.px]=150  [style.height.px]=50 (click)="openDialog()">Add Tenant</button>
+    </div>
+  </div>
+  <mat-progress-bar *ngIf="this.isLoading" mode="query"></mat-progress-bar>
+<table mat-table [dataSource]="dataSource"  matSort matSortStart="desc" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td mat-cell *matCellDef="let element"> 
+        <div id="dvEmail">
+          <mat-icon>email</mat-icon> <span>{{element.email}}</span> 
+        </div> 
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+    <ng-container matColumnDef="contact-number">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Contact Number </th>
+        <td mat-cell *matCellDef="let element">
+          <div id="dvPhoneNumber">
+            <mat-icon>phone</mat-icon>  <span>{{element.contact_number | phoneNumber}}</span>
+          </div> 
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.first_name +' ' +element.last_name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="rental">
+        <th mat-header-cell *matHeaderCellDef> Apply Rental </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="redirectToAppyRental(element.id,element.first_name +' ' +element.last_name)">
+              <mat-icon class="mat-18">reorder</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef> Details </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="redirectToDetails(element.id)">
+            <mat-icon class="mat-18">reorder</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef> Update </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="accent" (click)="redirectToUpdate(element.id)">
+              <mat-icon class="mat-18">system_update</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef> Delete </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
+                <mat-icon class="mat-18">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20,50]" class="mat-elevation-z8">
+  </mat-paginator>

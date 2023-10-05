@@ -1,0 +1,76 @@
+
+<div class="full-page center-screen">
+    
+    <form [formGroup]="form">
+     
+            <mat-card class="login-card" >
+                <div class="header-container">
+                    <div fxLayout="row" >
+                        <div>
+                           <img class="avatar mat-elevation-z8"
+                            src="https://images.unsplash.com/photo-1627327053419-fe894c4650ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"/>
+                          
+                         
+                        </div>
+                        <div  style="margin-left: 5px; margin-top: 5px;">
+                          <div> 
+                            <h4 class="name">Srijana Queens Tower</h4>
+                            <p class="designation">Bangalore-560032</p>
+                          </div>
+                         
+                        </div>
+                  
+                      </div>
+                </div>
+                <mat-divider></mat-divider>
+                <mat-progress-bar *ngIf="this.isLoading" mode="query"></mat-progress-bar>
+                <mat-error *ngIf="isError">Invalid username or password.</mat-error>
+                <mat-card-title>
+                    Sign In 
+                </mat-card-title>
+                <mat-card-content>
+                    <mat-form-field class="login-field">
+                        <input matInput placeholder="Email" name="email" formControlName="email" type="email" />
+                        <mat-error *ngIf="f.get('email')?.errors?.['required']">
+                            Email is required.
+                        </mat-error> 
+                        <mat-error *ngIf="f.get('email')?.errors?.['email']">
+                            Email must be a valid email address.
+                        </mat-error> 
+                                    
+                    </mat-form-field>
+                    <mat-form-field class="login-field">
+                        <input matInput placeholder="Password" name="password" formControlName="password" type="password"/>
+                        <mat-error *ngIf="f.get('password')?.errors?.['required']">
+                            Password is required.
+                        </mat-error> 
+                    </mat-form-field>
+                    
+                    
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary"
+                            class="login-field" (click)="login()" type="submit">
+                        Login
+                    </button>
+                </mat-card-actions>
+                <mat-card-actions>
+                    <div fxLayout="row" style=" height: 100%; width: 100%;" fxLayoutAlign="space-between">
+                        <div>
+                            <mat-label  routerLink="/sign-up">Sign up</mat-label>
+                        </div>
+                        <div>
+                            <mat-label (click)="forgotPassword()" >Forgot Password</mat-label>
+                        </div>
+
+                    </div>
+                    
+                </mat-card-actions>
+                
+            </mat-card>
+
+
+        
+    </form>
+   
+    </div>

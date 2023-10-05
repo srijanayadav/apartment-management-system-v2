@@ -1,0 +1,260 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.login-container {
+    margin-top: 50px;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    
+  }
+  
+  form {
+    width: 100%;
+  }
+  
+  .login-content {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .login-toolbar {
+    justify-content: center;
+    background-color: #1AA7EC;
+  }
+  .mat-input-wrapper {
+    width: auto !important;
+    height: auto !important;
+    font-size: 8px;
+    background-color: #3613b3;
+  }
+  mat-form-field {
+    width: 100%;
+    display: block;
+  }
+  
+  mat-raised-button {
+    width: 300px;
+    height: 100px;
+    margin-top: 15px;
+  }
+  .socialMediaFlex{
+   
+    display:flex;
+    justify-content: space-around;
+  }
+
+
+  h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+  }
+  h2, h3 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+  }
+  body {
+    margin: 0em;
+  }
+  body, input[text], button {
+    color: #333;
+    font-family: Cambria, Georgia;
+  }
+  a {
+    cursor: pointer;
+    cursor: hand;
+  }
+  button {
+    font-family: Arial;
+    background-color: #3613b3;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    cursor: hand;
+  }
+  button:hover {
+    background-color: #cfd8dc;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
+  }
+  
+  /* Navigation link styles */
+  nav a {
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+  nav a:visited, a:link {
+    color: #607D8B;
+  }
+  nav a:hover {
+    color: #039be5;
+    background-color: #CFD8DC;
+  }
+  nav a.active {
+    color: #039be5;
+  }
+  
+  /* everywhere else */
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+.submit-button {
+  
+    background-color:#1AA7EC;
+    color: #fff;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+    min-height:30px; 
+    min-width: 120px;
+  }
+  .cancel-button {
+  
+    background-color:#BDBDBD;
+    color: #fff;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+    min-height:30px; 
+    min-width: 120px;
+  }
+
+  .wpr {
+    display: flex;
+    width: 100%;
+  }
+  
+  .wpr div {
+    flex: 1 1 0;
+  
+    background: white;
+    text-align: center;
+    min-height: 40px;
+  }
+
+  .header-container{
+    
+    display:flex;
+    justify-content:flex-start;
+    width:100%;
+    height: auto;
+    flex-direction:row;
+  }
+  .container div{
+    border:1px solid blue;
+    height: 100px;
+    width: 100px;
+  }
+  .left{
+    display:flex;
+    /*align-self:flex-start; */
+    margin-right: auto; /* added */
+  }
+  .right{
+    display:flex;
+    /*align-self:flex-end; */
+    margin-left: auto; /* added */
+  }
+
+  .title-card {
+    width: auto;
+    height: 30px;
+    background-color: steelblue  !important;
+    margin-bottom: 5px;
+    padding-top: 4px;
+   
+    align-items: center !important;
+    
+  }
+  .title-card span{
+    text-align: center;
+    color: white!important;
+    align-items: baseline;
+    height: auto;
+    width: fit-content;
+    font-size: large;
+  }
+
+  .detail-contain {
+    display: flex;
+    width: 100%;
+    background-color:rgba(246, 248, 250, 0.966);
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .detail-contain span {
+    flex: 1 1 0;
+    background-color: transparent;
+    text-align: left;
+    min-height: 40px;
+  }
+  .detail-title-card {
+    width: auto;
+    height: auto;
+    background-color: steelblue  !important;
+    margin-bottom: 5px;
+
+  }
+  .detail-title-card span{
+    text-align: center;
+    color: white!important;
+    align-items: normal;
+    height: auto;
+    width: auto;
+    font-size: large;
+  }
+
+  .detail-header-container{
+  
+    height:auto;
+    align-items: center;
+   
+   }
+   .detail-header-container div span{
+    
+    text-align: center;
+    color: white!important;
+    align-items: normal;
+    height: auto;
+    width: auto;
+    font-size: large;
+  }
+
+
+  .detail-header-container div {
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #dvEmail {
+    height: 100% ;
+    display: flex;
+  }
+  #dvPhoneNumber {
+    height: 100% ;
+    display: flex;
+  }
+  #dvStatus {
+    height: 100% ;
+    display: flex;
+  }

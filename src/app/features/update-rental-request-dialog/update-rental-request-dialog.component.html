@@ -1,0 +1,115 @@
+
+<div>
+	<div class="login-content">
+        <mat-toolbar class="login-toolbar" >UPDATE RENTAL</mat-toolbar>
+        <mat-card>
+           
+<mat-divider></mat-divider>
+<mat-progress-bar *ngIf="this.isLoading" mode="query"></mat-progress-bar>
+
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Tenant</mat-label>
+        <input matInput
+            placeholder=""
+            readonly   
+            value="{{rentalDetails?.tenant?.first_name + ' ' + rentalDetails?.tenant?.last_name}}">
+    </mat-form-field>
+    <div style="display:flex;">
+        <mat-form-field >
+        
+            <mat-label>Status</mat-label>
+            <mat-select formControlName ="rent_status_id" placeholder="" required >
+              <mat-option *ngFor="let status of rentalStatusDDItems" [value]="status.value">
+                {{status.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.get('rent_status_id')?.errors?.['required']">
+                Status is required.
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button style="width: 150px; margin-top: 10px;margin-bottom: 10px;margin-left: 10px;" (click)="preViewAgreementDoc()" >Pre View</button>
+
+    </div>
+    
+    <mat-form-field>
+        <mat-label>Monthly Rent</mat-label>
+        <input matInput
+            placeholder="Monthly Rent"
+            formControlName="rent_amount"
+            [value]="rentalDetails?.rent_amount">
+            <mat-error *ngIf="f.get('rent_amount')?.errors?.['required']">
+                Monthly Rent is required.
+            </mat-error> 
+            <mat-error *ngIf="f.get('rent_amount')?.errors?.['pattern']">
+                Please, Enter only number.
+            </mat-error> 
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Maintenance Fee</mat-label>
+        <input matInput
+            placeholder="Maintenance Fee"
+            formControlName="maintenance_amount"  
+            [value]="rentalDetails?.maintenance_amount">
+            <mat-error *ngIf="f.get('maintenance_amount')?.errors?.['required']">
+                Maintenance Fee is required.
+            </mat-error> 
+            <mat-error *ngIf="f.get('maintenance_amount')?.errors?.['pattern']">
+                Please, Enter only number.
+            </mat-error> 
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Security Deposit</mat-label>
+        <input matInput
+            placeholder="Security Deposit"
+            formControlName = "deposit_amount"
+            [value]="rentalDetails?.deposit_amount">
+            <mat-error *ngIf="f.get('deposit_amount')?.errors?.['required']">
+                Security Deposit is required.
+            </mat-error> 
+            <mat-error *ngIf="f.get('deposit_amount')?.errors?.['pattern']">
+                Please, Enter only number.
+            </mat-error> 
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Agreement Start Date</mat-label>
+        <input matInput [matDatepicker]="agreement_start_date" [value]="rentalDetails?.agreement_start_date" formControlName="agreement_start_date">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="agreement_start_date"></mat-datepicker-toggle>
+        <mat-datepicker #agreement_start_date></mat-datepicker>
+        <mat-error *ngIf="f.get('agreement_start_date')?.errors?.['required']">
+            Agreement Start Date is required.
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Occupied Date</mat-label>
+        <input matInput [matDatepicker]="occupied_date" formControlName="occupied_date"  [value]="rentalDetails?.occupied_date">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="occupied_date"></mat-datepicker-toggle>
+        <mat-datepicker #occupied_date></mat-datepicker>
+        <mat-error *ngIf="f.get('occupied_date')?.errors?.['required']">
+            Occupied Date is required.
+        </mat-error>
+    </mat-form-field>
+      
+   
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+    <div class="wpr">
+       <div>
+         <button class="mat-raised-button cancel-button"(click)="close()">Close</button>
+        
+       </div>
+       <div>
+
+         <button class="mat-raised-button mat-primary submit-button"(click)="save()">Save</button>
+       </div>
+  
+</div>
+</mat-dialog-actions>
+        </mat-card>
+    </div>
+
+</div>

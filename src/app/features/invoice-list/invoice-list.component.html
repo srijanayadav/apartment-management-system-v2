@@ -1,0 +1,99 @@
+
+
+<mat-card class="title-card"> <span>Invoices</span> </mat-card>
+
+<div class="header-container">
+    <div class="left">
+        <mat-form-field [style.width.px]=300 [style.height.px]=70>
+            <input matInput  type="text" (keyup)="doFilter(getValue($event))" placeholder="Filter">
+          </mat-form-field>
+    </div>
+    <div class="right">
+        <button *ngIf="jwtPayloadData.is_superuser" mat-raised-button [style.width.px]=150  [style.height.px]=50 (click)="redirectToAdd()">Add Invoice</button>
+    </div>
+  </div>
+  <mat-progress-bar *ngIf="this.isLoading" mode="query"></mat-progress-bar>
+
+<table mat-table [dataSource]="dataSource"  matSort matSortStart="desc" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="invoice-number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Number </th>
+      <td mat-cell *matCellDef="let element"  matTooltip="{{element.invoice_number}}"> {{element.invoice_number}} </td>
+    </ng-container>
+    <ng-container matColumnDef="total-amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>
+        <td mat-cell *matCellDef="let element" matTooltip="{{element.total_amount | currency: 'INR'}}"> {{element.total_amount | currency: 'INR'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="purpose">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Purpose</th>
+        <td mat-cell *matCellDef="let element"> {{element.purpose}} </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let element" matTooltip="{{element.status}}"> 
+            <div id="dvStatus">
+                <mat-icon *ngIf="element.status=='PAID'" [ngStyle]="{'color':'green'}">check_circle</mat-icon>
+                {{element.status}} 
+            </div>
+          
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="payee-fullname" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Payee</th>
+      
+      <td mat-cell *matCellDef="let element" matTooltip="{{element.payee?.first_name + ' ' + element.payee?.last_name}}"> {{element.payee?.first_name + ' ' + element.payee?.last_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="payee-contact-number">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Payee Contact Number </th>
+        <td mat-cell *matCellDef="let element" matTooltip="{{element.payee?.contact_number | phoneNumber}}"> 
+          <div id="dvPhoneNumber">
+            <mat-icon>phone</mat-icon>  <span>{{element.payee?.contact_number | phoneNumber}}</span>
+          </div> 
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="payee-email">
+        <th mat-header-cell [hidden]="true" *matHeaderCellDef mat-sort-header> Payee Email </th>
+        <td mat-cell [hidden]="true" *matCellDef="let element" matTooltip="{{element.payee?.email}}">
+          <div id="dvEmail">
+            <mat-icon>email</mat-icon><span>{{element.payee?.email}}</span> 
+          </div>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="pay">
+        <th mat-header-cell *matHeaderCellDef> pay </th>
+        <td mat-cell  *matCellDef="let element">
+          <button *ngIf="element.status!='PAID'" mat-icon-button color="primary" (click)="redirectToPay(element.id)">
+              <mat-icon class="mat-18">payment</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+    
+    
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef> Details </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="redirectToDetails(element.id)">
+            <mat-icon class="mat-18">reorder</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+      <ng-container matColumnDef="delete">
+          <th mat-header-cell [hidden]="!jwtPayloadData.is_superuser" *matHeaderCellDef> Delete </th>
+          <td mat-cell [hidden]="!jwtPayloadData.is_superuser" *matCellDef="let element">
+            <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
+                <mat-icon class="mat-18">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20,50]" class="mat-elevation-z8">
+  </mat-paginator>
+
+

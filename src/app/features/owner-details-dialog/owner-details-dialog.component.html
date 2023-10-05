@@ -1,0 +1,49 @@
+<div>
+	<div class="login-content">
+        <mat-toolbar class="login-toolbar"><div mat-dialog-title>Owner Detail</div></mat-toolbar>
+
+   
+    </div>
+</div>
+
+<mat-dialog-content>  
+
+    <div class="detail-contain" >
+        <span>Email</span>
+        <span>{{ userDetail?.email }}</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="detail-contain" >
+        <span>First Name</span>
+        <span>{{ userDetail?.first_name }}</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="detail-contain" >
+        <span>Last Name</span>
+        <span>{{ userDetail?.last_name }}</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="detail-contain" >
+        <span>Contact Number</span>
+        <span>{{ userDetail?.contact_number }}</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="detail-contain" >
+        <span>Address</span>
+        <span>{{ userDetail?.address }}</span>
+    </div>
+   
+        
+        
+</mat-dialog-content>  
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+    <div class="wpr">
+       <div>
+         <button class="mat-raised-button cancel-button" (click)="close()">Close</button>
+        
+       </div>
+      
+
+</div>
+</mat-dialog-actions>

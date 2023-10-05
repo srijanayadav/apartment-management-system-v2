@@ -1,0 +1,64 @@
+<mat-card class="title-card"> <span>Dashboard</span> </mat-card>
+
+<div class="grid-container">
+    <div class="grid-item">
+      
+        <mat-card  class="flex-me" >
+            <mat-card-content>
+              
+                <div class="chart-container" style="position: relative; height: 230px;width: 100%">
+                    <canvas height="200px" width="400px" id="UnitPieChart" >{{ unitPieChart }}</canvas>
+                </div>
+             
+            </mat-card-content>
+        </mat-card>
+           
+    </div>
+    <div class="grid-item">
+       
+        <mat-card  class="flex-me">
+            <mat-card-content>
+            
+                    <div class="chart-container" style="position: relative; height: 230px;  width: 100%">
+                        <canvas height="200px" width="400px"   id="rentalPieChart" >{{ rentalPieChart }}</canvas>
+                    </div>
+                   
+            
+                
+            </mat-card-content>
+        </mat-card>
+        
+    </div>
+
+    <div class="grid-item">
+      
+        <mat-card  class="flex-me" >
+            <mat-card-content>
+              
+                <div class="chart-container" style="position: relative; height: 230px;width: 100%">
+                    <canvas height="200px" width="400px" id="ownerBarChart" >{{ ownerBarChart }}</canvas>
+                </div>
+             
+            </mat-card-content>
+        </mat-card>
+           
+    </div>
+    <div class="grid-item">
+       
+        <mat-card  class="flex-me">
+            <mat-card-content>
+            
+                <mat-card-content>
+              
+                    <div class="chart-container" style="position: relative; height: 230px;width: 100%">
+                        <canvas height="200px" width="400px" id="tenantBarChart" >{{ tenantBarChart }}</canvas>
+                    </div>
+                 
+                </mat-card-content>
+            
+                
+            </mat-card-content>
+        </mat-card>
+        
+    </div>
+</div>

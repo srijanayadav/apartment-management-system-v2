@@ -1,0 +1,13 @@
+table {
+    width:100%;
+    min-width:auto;
+    background-color:white;
+    table-layout: fixed;
+  }
+
+.mat-footer-row,
+.mat-header-row,
+.mat-row {
+    display: inline-flex;
+    min-width: 100%;
+}

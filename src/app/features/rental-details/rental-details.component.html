@@ -1,0 +1,231 @@
+
+<app-detail-page-header routerLink="/rentals" title="Rental Details"></app-detail-page-header>
+
+
+  <div class="grid-container">
+    <div class="grid-item">
+
+        
+        <mat-card  class="flex-me" [style.height.%]="100" [style.width.%]="100">
+            <mat-card-content>
+                <mat-card-title  class="mat-card-tile">
+                    Rental
+                </mat-card-title>
+                
+                <div style="background-color: aqua; width: 100%;">
+
+                    <div class="div-table"> 
+                        <div class="trow"> 
+                            <div class="tcolumn ">Status</div> 
+                            <div class="tcolumn ">{{rentalDetails?.status?.status}}</div> 
+                            
+                       </div> 
+                        <div class="trow"> 
+                            <div class="tcolumn">Submitted Date</div>
+                             <div class="tcolumn">{{rentalDetails?.created_at | date: 'dd/MM/yyyy'}}</div> 
+                             
+                        </div>
+                        <div class="trow"> 
+                            <div class="tcolumn">Submitted By</div>
+                             <div class="tcolumn">{{rentalDetails?.tenant?.first_name + ' ' + rentalDetails?.tenant?.last_name}}</div> 
+                             
+                        </div>
+
+                        <div class="trow"> 
+                            <div class="tcolumn">Monthly Rent</div>
+                             <div class="tcolumn">{{rentalDetails?.rent_amount | currency: 'INR' }}</div> 
+                             
+                        </div>
+
+                        <div class="trow"> 
+                            <div class="tcolumn">Security Deposit</div>
+                             <div class="tcolumn">{{rentalDetails?.deposit_amount | currency: 'INR' }}</div> 
+                             
+                        </div>
+                        <div class="trow"> 
+                            <div class="tcolumn">Monthly Maintenance Amount</div>
+                             <div class="tcolumn">{{rentalDetails?.maintenance_amount | currency: 'INR' }}</div> 
+                             
+                        </div>
+                        <div class="trow"> 
+                            <div class="tcolumn">Agreement Start Date</div>
+                             <div class="tcolumn">{{rentalDetails?.agreement_start_date |date: 'dd/MM/yyyy'}}</div> 
+                             
+                        </div>
+                        <div class="trow"> 
+                            <div class="tcolumn">Agreement Status</div>
+                             <div class="tcolumn">{{rentalAgreementInfo?.status}}</div> 
+                             
+                        </div>
+                        <div class="trow"> 
+                            <div class="tcolumn">Agreement Sent Date</div>
+                             <div class="tcolumn">{{rentalAgreementInfo?.sent_date |date: 'dd/MM/yyyy'}}</div> 
+                             
+                        </div>
+                        <div class="trow"> 
+                            <div class="tcolumn">Agreement File</div>
+                             <div class="tcolumn">
+                                <div *ngIf="viewAgreementFileLink(rentalDetails?.status?.id!)">
+                                    <button (click)="viewAgreementFile(rentalDetails?.id!)" mat-button color="primary">
+                                        <mat-icon>pageview</mat-icon>
+                                        <span>view</span>
+                                     </button>
+                                     <button (click)="downloadAgreementFile(rentalDetails?.id!)" mat-button color="primary">
+                                        <mat-icon>cloud_download</mat-icon>
+                                        <span>download</span>
+                                     </button>
+                                  
+                                 </div> 
+                                
+                               
+                            </div> 
+                             
+                        </div>
+                     
+                     
+                    </div>
+        
+                </div>
+            </mat-card-content>
+        </mat-card>
+       
+    </div>
+    <div class="grid-item">
+
+        <mat-card  class="flex-me" [style.height.%]="100" [style.width.%]="100">
+            
+            <mat-card-content>
+                <mat-card-title class="mat-card-tile">
+                   Unit
+                </mat-card-title>
+                
+                <div class="div-table"> 
+                    <div class="trow"> 
+                        <div class="tcolumn ">Unit Number</div> 
+                        <div class="tcolumn ">{{rentalDetails?.unit_info?.unit_number}}</div> 
+                       
+                    </div> 
+                    <div class="trow"> 
+                        <div class="tcolumn ">Floor Number</div> 
+                        <div class="tcolumn ">{{rentalDetails?.unit_info?.floor_number}}</div> 
+                       
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn ">Bed Rooms</div> 
+                        <div class="tcolumn ">{{rentalDetails?.unit_info?.bedroom}}</div> 
+                       
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn ">Bath Rooms</div> 
+                        <div class="tcolumn ">{{rentalDetails?.unit_info?.bathroom}}</div> 
+                       
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn ">Balcony</div> 
+                        <div class="tcolumn ">{{rentalDetails?.unit_info?.balcony}}</div> 
+                       
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn ">Carpet Area</div> 
+                        <div class="tcolumn ">{{rentalDetails?.unit_info?.carpet_area | number }} sqft</div> 
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn ">Parking Slot</div> 
+                        <div class="tcolumn ">{{rentalDetails?.unit_info?.parking_slot }}</div> 
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn ">Description</div> 
+                        <div class="tcolumn ">{{rentalDetails?.unit_info?.description }}</div> 
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+       
+    </div>
+    <div class="grid-item">
+        <mat-card  class="flex-me" [style.height.%]="100" [style.width.%]="100">
+            
+            <mat-card-content>
+                <mat-card-title class="mat-card-tile">
+                   Tenant
+                </mat-card-title>
+                
+                <div class="div-table"> 
+                    <div class="trow"> 
+                        <div class="tcolumn ">Name</div> 
+                        <div class="tcolumn ">{{rentalDetails?.tenant?.first_name + ' ' + rentalDetails?.tenant?.last_name}}</div> 
+                       
+                    </div> 
+                    
+                    <div class="trow"> 
+                        <div class="tcolumn ">Email</div> 
+                        <div class="tcolumn ">
+                            <div id="dvEmail">
+                                <mat-icon>email</mat-icon> <span>{{rentalDetails?.tenant?.email}}</span> 
+                            </div>
+
+                        </div> 
+                       
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn ">Contact Number</div> 
+                        <div class="tcolumn ">
+                            <div id="dvPhoneNumber">
+                                <mat-icon>phone</mat-icon>  <span>{{rentalDetails?.tenant?.contact_number | phoneNumber}}</span>
+                            </div>
+                        </div> 
+                       
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn ">Address</div> 
+                        <div class="tcolumn ">{{rentalDetails?.tenant?.address}}</div> 
+                       
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>  
+    <div class="grid-item">
+        <mat-card  class="flex-me" [style.height.%]="100" [style.width.%]="100">
+            
+            <mat-card-content>
+                <mat-card-title class="mat-card-tile">
+                   Owner
+                </mat-card-title>
+                
+                <div class="div-table"> 
+                    <div class="trow"> 
+                        <div class="tcolumn ">Name</div> 
+                        <div class="tcolumn ">{{rentalDetails?.owner?.first_name + ' ' + rentalDetails?.owner?.last_name}}</div> 
+                       
+                    </div> 
+                    
+                    <div class="trow"> 
+                        <div class="tcolumn ">Email</div> 
+                        <div class="tcolumn ">
+                            <div id="dvEmail">
+                                <mat-icon>email</mat-icon> <span>{{rentalDetails?.owner?.email}}</span> 
+                            </div>
+                        </div> 
+                       
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn">Contact Number</div> 
+                        <div class="tcolumn">
+                            <div id="dvPhoneNumber">
+                                <mat-icon>phone</mat-icon>  <span>{{rentalDetails?.owner?.contact_number | phoneNumber}}</span>
+                            </div>
+                        </div> 
+                       
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn ">Address</div> 
+                        <div class="tcolumn ">{{rentalDetails?.owner?.address}}</div> 
+                       
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+   
+  </div>

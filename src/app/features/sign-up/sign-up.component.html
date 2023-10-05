@@ -1,0 +1,164 @@
+<div class="full-signup-page center-screen">
+    
+    <form [formGroup]="form">
+
+            <mat-card class="signup-card">
+
+                <div class="header-container">
+                    <div fxLayout="row" >
+                        <div>
+                           <img class="avatar mat-elevation-z8"
+                            src="https://images.unsplash.com/photo-1627327053419-fe894c4650ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"/>
+                          
+                         
+                        </div>
+                        <div  style="margin-left: 5px; margin-top: 5px;">
+                          <div> 
+                            <h4 class="name">Srijana Queens Tower</h4>
+                            <p class="designation">Bangalore-560032</p>
+                          </div>
+                         
+                        </div>
+                  
+                      </div>
+                </div>
+                <mat-divider></mat-divider>
+
+                <mat-progress-bar *ngIf="this.isLoading" mode="query"></mat-progress-bar>
+                <mat-error *ngIf="isError">{{errorMsg}}</mat-error>
+                <mat-card-title>
+                    Sign Up 
+                </mat-card-title>
+                
+                <mat-card-content>
+                  
+                    <mat-form-field class="signup-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput
+                                placeholder="Email"
+                               formControlName="email">
+
+
+                        <mat-error *ngIf="f.get('email')?.errors?.['required']">
+                            Email is required.
+                        </mat-error> 
+                        <mat-error *ngIf="f.get('email')?.errors?.['email']">
+                            Email must be a valid email address.
+                        </mat-error> 
+                                    
+                    </mat-form-field>
+
+                    <mat-form-field class="signup-field">
+                        <mat-label>Password</mat-label>
+                        <input matInput
+                            placeholder="Password"
+                            formControlName="password"
+                            type="password">
+                            <mat-error *ngIf="f.get('password')?.errors?.['required']">
+                                Password is required.
+                            </mat-error> 
+                            <mat-error *ngIf="f.get('password')?.errors?.['minlength']">
+                                Password must be at least 6 characters.
+                            </mat-error>
+                            <mat-error *ngIf="f.get('password')?.errors?.['maxlength']">
+                                Password must not exceed 20 characters.
+                            </mat-error>
+                            
+                    </mat-form-field>
+
+                    <mat-form-field class="signup-field">
+                        <mat-label>Confirm Password</mat-label>
+                        <input matInput
+                                placeholder="Confirm Password"
+                               formControlName="confirm_password"
+                               type="password">
+                              
+                                    
+                    </mat-form-field>
+                    
+                    <mat-error *ngIf="f.get('confirm_password')?.errors?.['mismatch']">
+                        Passsword and Confirm Password didn't match.
+                    </mat-error> 
+                   
+                    <mat-form-field class="signup-field">
+                        <mat-label>First Name</mat-label>
+                        <input matInput
+                                placeholder="First Name"
+                               formControlName="first_name">
+                            <mat-error *ngIf="f.get('first_name')?.errors?.['required']">
+                                First Name is required.
+                            </mat-error>       
+                    </mat-form-field>
+
+                    <mat-form-field class="signup-field">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput
+                                placeholder="Last Name"
+                               formControlName="last_name">   
+                            <mat-error *ngIf="f.get('last_name')?.errors?.['required']">
+                                Last Name is required.
+                            </mat-error>                  
+                    </mat-form-field>
+                   
+                    <mat-form-field class="signup-field">
+                        <mat-label>Contact Number</mat-label>
+                        <input matInput
+                                placeholder="Contact Number"
+                               formControlName="contact_number">
+                            <mat-error *ngIf="f.get('contact_number')?.errors?.['required']">
+                                Contact Number is required.
+                            </mat-error> 
+                            <mat-error *ngIf="f.get('contact_number')?.errors?.['pattern']">
+                                Please, Enter 10 digit Mobile Number.
+                            </mat-error>        
+                    </mat-form-field>
+
+                    <mat-form-field class="signup-field">
+                        <mat-label>Address</mat-label>
+                        <textarea  matInput
+                            placeholder="Address"
+                            formControlName="address">
+                        </textarea>
+                        <mat-error *ngIf="f.get('address')?.errors?.['required']">
+                            Address is required.
+                        </mat-error> 
+                    </mat-form-field>
+                   
+                   
+                    <mat-form-field class="signup-field">
+                        <mat-label>Gender</mat-label>
+                        <mat-select formControlName ="gender" placeholder="Gender" >
+                          <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                            {{gender.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    
+                    
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary"
+                            class="signup-field" (click)="save()" type="submit">
+                        Submit
+                    </button>
+                </mat-card-actions>
+                <mat-card-actions>
+                    <div fxLayout="row" style=" height: 100%; width: 100%;" fxLayoutAlign="space-between">
+                        <div>
+                            <mat-label ></mat-label>
+                        </div>
+                        <div>
+                            <mat-label routerLink="/login" >Already registered?</mat-label>
+                        </div>
+
+                    </div>
+                    
+                </mat-card-actions>
+         
+                
+            </mat-card>
+
+        
+    </form>
+   
+    </div>

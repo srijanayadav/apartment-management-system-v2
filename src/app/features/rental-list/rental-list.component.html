@@ -1,0 +1,88 @@
+
+
+<mat-card class="title-card"> <span>Rentals</span> </mat-card>
+
+<div class="header-container">
+    <div class="left">
+        <mat-form-field [style.width.px]=300 [style.height.px]=70>
+            <input matInput  type="text" (keyup)="doFilter(getValue($event))" placeholder="Filter">
+          </mat-form-field>
+    </div>
+    <div class="right">
+       
+    </div>
+  </div>
+  <mat-progress-bar *ngIf="this.isLoading" mode="query"></mat-progress-bar>
+
+<table mat-table [dataSource]="dataSource"  matSort matSortStart="desc" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="unit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit </th>
+      <td mat-cell *matCellDef="let element"> {{element.unit_info?.unit_number}} </td>
+    </ng-container>
+    <ng-container matColumnDef="tenant-fullname" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tenant</th>
+      
+      <td mat-cell *matCellDef="let element" matTooltip="{{element.tenant?.first_name + ' ' + element.tenant?.last_name}}"> {{element.tenant?.first_name + ' ' + element.tenant?.last_name}} </td>
+    </ng-container>
+    
+    
+    <ng-container matColumnDef="tenant-contact-number">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tenant Contact Number </th>
+        <td mat-cell *matCellDef="let element" matTooltip="{{element.tenant?.contact_number | phoneNumber}}"> 
+          <div id="dvPhoneNumber">
+            <mat-icon>phone</mat-icon>  <span>{{element.tenant?.contact_number | phoneNumber}}</span>
+          </div> 
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="tenant-email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tenat Email </th>
+        <td mat-cell *matCellDef="let element" matTooltip="{{element.tenant?.email}}">
+          <div id="dvEmail">
+            <mat-icon>email</mat-icon><span>{{element.tenant?.email}}</span> 
+          </div>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let element" matTooltip="{{element.status?.status}}"> {{element.status?.status}} </td>
+    </ng-container>
+    <ng-container matColumnDef="submitted-date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Submitted Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.created_at | date: 'shortDate'}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef> Details </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="redirectToDetails(element.id)">
+            <mat-icon class="mat-18">reorder</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="update">
+        <th mat-header-cell [hidden]="!jwtPayloadData.is_superuser" *matHeaderCellDef> Update </th>
+        <td mat-cell [hidden]="!jwtPayloadData.is_superuser" *matCellDef="let element">
+          <button mat-icon-button color="accent" (click)="redirectToUpdate(element.id)">
+              <mat-icon class="mat-18">system_update</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+          <th mat-header-cell [hidden]="!jwtPayloadData.is_superuser" *matHeaderCellDef> Delete </th>
+          <td mat-cell [hidden]="!jwtPayloadData.is_superuser" *matCellDef="let element">
+            <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
+                <mat-icon class="mat-18">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20,50]" class="mat-elevation-z8">
+  </mat-paginator>
+
+

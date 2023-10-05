@@ -1,0 +1,149 @@
+
+<div>
+	<div class="login-content">
+        <mat-toolbar class="login-toolbar" >ADD UNIT</mat-toolbar>
+        <mat-card>
+           
+
+<mat-dialog-content [formGroup]="form">
+  
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput
+                placeholder="Title"
+               formControlName="title">
+               <mat-error *ngIf="f.get('title')?.errors?.['required']">
+                Title is required.
+               </mat-error>
+    </mat-form-field>
+   
+    <mat-form-field>
+        <mat-label>Unit Number</mat-label>
+        <input matInput
+                placeholder="Unit Number"
+               formControlName="unit_number">
+               <mat-error *ngIf="f.get('unit_number')?.errors?.['required']">
+                Unit Number is required.
+               </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Floor Number</mat-label>
+        <input matInput
+                placeholder="Floor Number"
+               formControlName="floor_number"> 
+               <mat-error *ngIf="f.get('floor_number')?.errors?.['required']">
+                Floor Number is required.
+               </mat-error> 
+              <mat-error *ngIf="f.get('floor_number')?.errors?.['pattern']">
+                  Please, Enter only number.
+              </mat-error>              
+    </mat-form-field>
+   
+    <mat-form-field>
+        <mat-label>Number of bedrooms</mat-label>
+        <input matInput
+                placeholder="Number of bedrooms"
+               formControlName="bedroom">
+               <mat-error *ngIf="f.get('bedroom')?.errors?.['required']">
+                Number of bedrooms is required.
+               </mat-error> 
+              <mat-error *ngIf="f.get('bedroom')?.errors?.['pattern']">
+                  Please, Enter only number.
+              </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Number of bathrooms</mat-label>
+        <input matInput
+                placeholder="Number of bathrooms"
+               formControlName="bathroom">
+               <mat-error *ngIf="f.get('bathroom')?.errors?.['required']">
+                Number of bathrooms is required.
+               </mat-error> 
+              <mat-error *ngIf="f.get('bathroom')?.errors?.['pattern']">
+                  Please, Enter only number.
+              </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Number of balcony</mat-label>
+        <input matInput
+                placeholder="Number of balcony"
+               formControlName="balcony">
+               <mat-error *ngIf="f.get('balcony')?.errors?.['required']">
+                Number of balcony is required.
+               </mat-error> 
+              <mat-error *ngIf="f.get('balcony')?.errors?.['pattern']">
+                  Please, Enter only number.
+              </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Carpet Area</mat-label>
+        <input matInput
+                placeholder="Carpet Area"
+               formControlName="carpet_area">
+               <mat-error *ngIf="f.get('carpet_area')?.errors?.['required']">
+                Carpet Area is required.
+               </mat-error> 
+              <mat-error *ngIf="f.get('carpet_area')?.errors?.['pattern']">
+                  Please, Enter only number.
+              </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Parking Slot</mat-label>
+        <input matInput
+                placeholder="Parking Slot"
+               formControlName="parking_slot">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea  matInput
+            placeholder="Description"
+            formControlName="description">
+        </textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Unit Type</mat-label>
+        <mat-select formControlName ="unit_type_id" placeholder="Unit Types" required>
+          <mat-option *ngFor="let type of unitTypes" [value]="type.value">
+            {{type.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.get('unit_type_id')?.errors?.['required']">
+          Unit Type is required.
+         </mat-error> 
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Block</mat-label>
+ 
+        <mat-select formControlName ="block_id" placeholder="Blocks" required>
+          <mat-option *ngFor="let block of blocks" [value]="block.value">
+            {{block.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.get('block_id')?.errors?.['required']">
+          Block is required.
+         </mat-error>
+    </mat-form-field>
+      
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="wpr">
+       <div>
+         <button class="mat-raised-button cancel-button"(click)="close()">Close</button>
+        
+       </div>
+       <div>
+
+         <button class="mat-raised-button mat-primary submit-button"(click)="save()">Save</button>
+       </div>
+     
+   
+
+    
+</div>
+</mat-dialog-actions>
+        </mat-card>
+    </div>
+
+</div>

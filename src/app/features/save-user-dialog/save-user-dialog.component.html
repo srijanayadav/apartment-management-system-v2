@@ -1,0 +1,93 @@
+
+<div>
+	<div class="login-content">
+        <mat-toolbar class="login-toolbar">REGISTER</mat-toolbar>
+        <mat-card>
+           
+
+<mat-dialog-content [formGroup]="form">
+  
+    <mat-form-field> 
+        <mat-label>Email</mat-label>
+        <input matInput
+            placeholder="abc@example.com"
+            formControlName="email">
+            <mat-error *ngIf="f.get('email')?.errors?.['required']">
+                Email is required.
+            </mat-error> 
+            <mat-error *ngIf="f.get('email')?.errors?.['email']">
+                Email must be a valid email address.
+            </mat-error> 
+    </mat-form-field>
+ 
+    
+
+
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput
+            placeholder="Password"
+            formControlName="password"
+            type="password">
+            <mat-error *ngIf="f.get('password')?.errors?.['required']">
+                Password is required.
+            </mat-error> 
+            <mat-error *ngIf="f.get('password')?.errors?.['minlength']">
+                Password must be at least 6 characters.
+            </mat-error>
+            <mat-error *ngIf="f.get('password')?.errors?.['maxlength']">
+                Password must not exceed 20 characters.
+            </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input matInput
+                placeholder="Confirm Password"
+               formControlName="confirm_password"
+               type="password">
+              
+                    
+    </mat-form-field>
+    
+    <mat-error *ngIf="f.get('confirm_password')?.errors?.['mismatch']">
+        Passsword and Confirm Password didn't match.
+    </mat-error> 
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput
+                placeholder="First Name"
+               formControlName="first_name">
+               <mat-error *ngIf="f.get('first_name')?.errors?.['required']">
+                First Name is required.
+            </mat-error> 
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput
+                placeholder="Last Name"
+               formControlName="last_name">
+               <mat-error *ngIf="f.get('last_name')?.errors?.['required']">
+                Last Name is required.
+            </mat-error> 
+    </mat-form-field>
+      
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="wpr">
+       <div>
+         <button class="mat-raised-button cancel-button"(click)="close()">Close</button>
+        
+       </div>
+       <div>
+
+         <button class="mat-raised-button mat-primary submit-button"(click)="save()">Save</button>
+       </div>
+
+</div>
+</mat-dialog-actions>
+        </mat-card>
+    </div>
+
+</div>

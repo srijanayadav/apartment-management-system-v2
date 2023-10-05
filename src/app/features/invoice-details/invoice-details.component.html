@@ -1,0 +1,117 @@
+
+<app-detail-page-header routerLink="/invoices" title="Invoice Details"></app-detail-page-header>
+
+
+  <div class="grid-container">
+    <div class="grid-item">
+
+        
+        <mat-card  class="flex-me" [style.height.%]="100" [style.width.%]="100">
+            <mat-card-content>
+                <mat-card-title  class="mat-card-tile">
+                    Invoice
+                </mat-card-title>
+                
+                <div style="background-color: aqua; width: 100%;">
+
+                    <div class="div-table"> 
+                        <div class="trow"> 
+                            <div class="tcolumn ">Invoice Number</div> 
+                            <div class="tcolumn ">{{invoiceDetails?.invoice_number}}</div> 
+                            
+                    </div>
+                    
+                    <div class="trow"> 
+                        <div class="tcolumn">Total Amount</div>
+                        <div class="tcolumn">{{invoiceDetails?.total_amount | currency: 'INR' }}</div> 
+                         
+                    </div>
+                    <div class="trow"> 
+                            <div class="tcolumn ">Status</div> 
+                            <div class="tcolumn ">
+                                <div style="display: inline;">
+                                    <div id="dvStatus">
+                                        <mat-icon *ngIf="invoiceDetails?.status=='PAID'" [ngStyle]="{'color':'green'}">check_circle</mat-icon>
+                                        {{invoiceDetails?.status}} 
+                                    </div>
+                                    <div>
+                                        <button *ngIf="invoiceDetails?.status!='PAID'" mat-icon-button color="primary" (click)="redirectToPay(invoiceDetails?.id!)">
+                                            <mat-icon class="mat-18">payment</mat-icon>
+                                        </button>
+                                    </div>
+
+                                </div>
+                                
+                              
+                                
+                            </div> 
+                            
+                    </div> 
+                    <div class="trow"> 
+                        <div class="tcolumn ">Purpose</div> 
+                        <div class="tcolumn ">{{invoiceDetails?.purpose}}</div> 
+                        
+                    </div> 
+                    <div class="trow"> 
+                            <div class="tcolumn">Created Date</div>
+                             <div class="tcolumn">{{invoiceDetails?.created_at | date: 'dd/MM/yyyy'}}</div> 
+                             
+                    
+                        
+                                
+                               
+                    </div> 
+                </div> 
+        
+                </div>
+            </mat-card-content>
+        </mat-card>
+       
+    </div>
+   
+    <div class="grid-item">
+        <mat-card  class="flex-me" [style.height.%]="100" [style.width.%]="100">
+            
+            <mat-card-content>
+                <mat-card-title class="mat-card-tile">
+                   Payee
+                </mat-card-title>
+                
+                <div class="div-table"> 
+                    <div class="trow"> 
+                        <div class="tcolumn ">Name</div> 
+                        <div class="tcolumn ">{{invoiceDetails?.payee?.first_name + ' ' + invoiceDetails?.payee?.last_name}}</div> 
+                       
+                    </div> 
+                    
+                    <div class="trow"> 
+                        <div class="tcolumn ">Email</div> 
+                        <div class="tcolumn ">
+                            <div id="dvEmail">
+                                <mat-icon>email</mat-icon> <span>{{invoiceDetails?.payee?.email}}</span> 
+                            </div>
+
+                        </div> 
+                       
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn ">Contact Number</div> 
+                        <div class="tcolumn ">
+                            <div id="dvPhoneNumber">
+                                <mat-icon>phone</mat-icon>  <span>{{invoiceDetails?.payee?.contact_number | phoneNumber}}</span>
+                            </div>
+                        </div> 
+                       
+                    </div>
+                    <div class="trow"> 
+                        <div class="tcolumn ">Address</div> 
+                        <div class="tcolumn ">{{invoiceDetails?.payee?.address}}</div> 
+                       
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>  
+    
+   
+  </div>
